@@ -14,7 +14,7 @@ export default function App() {
         //it does not interfere to the others
       }
       <Steps />
-      {/* <Steps /> */}
+      <Steps />
     </div>
   );
 }
@@ -62,37 +62,25 @@ function Steps() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
+          <p className="message">
+            Step {step}: {messages[step - 1]}
+          </p>
           <div className="buttons">
-            <Button textColor="#fff" bgColor="#7950f2" onClick={handlePrevios}>
-              <span>⏮️</span>Previos
-            </Button>
-            <Button textColor="#fff" bgColor="#7950f2" onClick={handleNext}>
-              Next<span>⏭️</span>
-            </Button>
+            <button
+              onClick={handlePrevios}
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            >
+              Previous
+            </button>
+            <button
+              onClick={handleNext}
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function Button({ textColor, bgColor, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{ backgroundColor: bgColor, color: textColor }}
-    >
-      {children}
-    </button>
-  );
-}
-
-function StepMessage({ step, children }) {
-  return (
-    <div className="message">
-      <h3>Step {step}:</h3>
-      {children}
-    </div>
   );
 }
